@@ -1,5 +1,7 @@
 .dev
 
+dist
+
 compiled-by-ts
 
 node_modules

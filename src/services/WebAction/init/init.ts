@@ -1,14 +1,20 @@
-import { chromium as playwright, Browser, BrowserContext, Page } from "playwright-core";
+import { PROCESS_ENV_DEVELOPMENT } from "../../../CONSTANTS";
+import * as dotenv from "dotenv";
+import {
+  chromium as playwright,
+  Browser,
+  BrowserContext,
+  Page,
+} from "playwright-core";
+
 import chromium from "@sparticuz/chromium";
+import { initExecutalbePath } from "./initExecutalbePath";
+// dotenv.config();
+
+const ENV_STATE = process.env.NODE_ENV;
 
 export const initPlaywright = async (): Promise<void> => {
-  // 환경 설정: 로컬 또는 Lambda
-  const isLocalEnv = true;
-
-  // Chromium 실행 파일 경로 설정
-  const executablePath: string = isLocalEnv
-    ? "/snap/bin/chromium" // 로컬에서 사용할 Chromium 경로
-    : await chromium.executablePath();
+  const executablePath: string = await initExecutalbePath();
 
   // 브라우저 실행
   const browser: Browser = await playwright.launch({
@@ -26,7 +32,6 @@ export const initPlaywright = async (): Promise<void> => {
   // 페이지 제목 출력
   const pageTitle: string = await page.title();
   console.log("pageTitle:", pageTitle);
-
 
   // 브라우저 종료
   await browser.close();
