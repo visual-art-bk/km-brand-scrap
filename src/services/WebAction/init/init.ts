@@ -1,5 +1,3 @@
-import { PROCESS_ENV_DEVELOPMENT } from "../../../CONSTANTS";
-import * as dotenv from "dotenv";
 import {
   chromium as playwright,
   Browser,
@@ -9,9 +7,6 @@ import {
 
 import chromium from "@sparticuz/chromium";
 import { initExecutalbePath } from "./initExecutalbePath";
-// dotenv.config();
-
-const ENV_STATE = process.env.NODE_ENV;
 
 export const initPlaywright = async (): Promise<void> => {
   const executablePath: string = await initExecutalbePath();
