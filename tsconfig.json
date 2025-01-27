@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "commonjs", // CommonJS 모듈과 호환
+    "strict": true,
+    "target": "es2016",
+    "outDir": "./compiled-by-ts",
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "compiled-by-ts", "dist"]
+}
