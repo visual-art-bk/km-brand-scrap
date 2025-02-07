@@ -1,7 +1,7 @@
 import { initPlaywright } from "./services/WebAction/init/init";
 import WebAction from "./services/WebAction";
 
-export const handler = async () => {
+export const handler = (async () => {
   await WebAction.init();
 
   const response = {
@@ -9,4 +9,4 @@ export const handler = async () => {
     body: JSON.stringify("하이 병관! 테스트중"),
   };
   return response;
-};
+})()
